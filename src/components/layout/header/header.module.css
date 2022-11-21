@@ -1,0 +1,13 @@
+.navHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #363a3e;
+  flex-direction: row;
+}
+.logo {
+  color: #ffe300;
+  font-weight: 700;
+  text-transform: uppercase;
+}

@@ -1,16 +1,16 @@
-import React from 'react';
-import styles from './App.module.css';
+import Footer from './components/layout/footer/footer';
+import Header from './components/layout/header/header';
+import styles from './styles/index.module.css';
 
 function App() {
   return (
-    <div className='App'>
-      <h1 className={styles.title}>Hello World !!!</h1>
-      <p className={styles.mainText}>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia, nam sapiente? Accusamus
-        temporibus ex assumenda voluptates, adipisci tempora exercitationem nobis dolore quam dolor?
-        Mollitia commodi earum quisquam alias deleniti maxime.
-      </p>
-    </div>
+    <>
+      <div className='app'>
+        <Header />
+        sdfsdfsd
+      </div>
+      <Footer />
+    </>
   );
 }
 
