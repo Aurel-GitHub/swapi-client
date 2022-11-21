@@ -10,6 +10,7 @@
   color: #ffe300;
   font-weight: 700;
   text-transform: uppercase;
+  cursor: pointer;
 }
 @media (max-width: 700px) {
   .navHeader {
