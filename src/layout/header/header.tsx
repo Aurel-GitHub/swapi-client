@@ -1,6 +1,6 @@
-import DropdownCategories from '../../inputs/dropdown-categories';
-import InputLanguage from '../../inputs/input-language';
-import InputSearch from '../../inputs/input-search';
+import DropdownCategories from '../../components/inputs/dropdown-categories';
+import InputLanguage from '../../components/inputs/input-language';
+import InputSearch from '../../components/inputs/input-search';
 import styles from './header.module.css';
 
 export default function Header(): JSX.Element {

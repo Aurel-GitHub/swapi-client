@@ -1,5 +1,5 @@
-import Footer from './components/layout/footer/footer';
-import Header from './components/layout/header/header';
+import Footer from './layout/footer/footer';
+import Header from './layout/header/header';
 
 function App() {
   return (
