@@ -14,3 +14,9 @@
   width: 50%;
   margin-bottom: 1rem;
 }
+
+.textDanger {
+  color: red;
+  font-size: 11px;
+  margin-bottom: 1rem;
+}

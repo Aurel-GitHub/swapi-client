@@ -1,7 +1,7 @@
 import styles from './login.module.css';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-type LoginForm = {
+type Authentication = {
   firstname: string;
   password: string;
 };
@@ -11,25 +11,32 @@ export default function Login(): JSX.Element {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  function onSubmit(data: LoginForm): void {
-    return console.log(data);
-  }
+  } = useForm<Authentication>();
+
+  const onSubmit: SubmitHandler<Authentication> = async (data): Promise<void> => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(() => onSubmit)} className={styles.formLogin}>
+    <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
       <label className={styles.formLabel}>Prénom</label>
-      <input className={styles.formInput} {...register('firstname', { required: true })} />
-      {errors.exampleRequired && <span>Ce champs est requis</span>}
+      <input
+        className={styles.formInput}
+        {...register('firstname', {
+          required: true,
+        })}
+      />
+      {errors.firstname && <small className={styles.textDanger}>Veuillez saisir un prénom</small>}
 
       <label className={styles.formLabel}>Mot de passe</label>
       <input
         type='password'
         className={styles.formInput}
-        {...register('exampleRequired', { required: true })}
+        {...register('password', {
+          required: true,
+        })}
       />
-      {errors.exampleRequired && <span>Ce champs est requis</span>}
-
+      {errors.password && (
+        <small className={styles.textDanger}>Veuillez saisir un mot de passe</small>
+      )}
       <input type='submit' className={styles.formBtn} />
     </form>
   );
