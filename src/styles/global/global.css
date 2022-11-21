@@ -1,3 +1,9 @@
+/* Global style */
+.decorationNone {
+  text-decoration: none !important;
+}
+
+/* Responsive */
 @media (max-width: 700px) {
   .marginTopRes {
     margin: 1vh;
