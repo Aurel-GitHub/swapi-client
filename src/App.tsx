@@ -1,8 +1,8 @@
-import Header from './components/layout/header/header';
+import Header from './components/layout/header/Header';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home/home';
-import Login from './pages/login/login';
-import ResultDetails from './pages/result-details/result-details';
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import ResultDetails from './pages/result-details/ResultDetails';
 import { RequireAuth } from 'react-auth-kit';
 
 function App() {

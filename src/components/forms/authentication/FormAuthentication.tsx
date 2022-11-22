@@ -1,4 +1,4 @@
-import styles from './form-authentication.module.css';
+import styles from './FormAuthentication.module.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSignIn } from 'react-auth-kit';
 import { useDispatch } from 'react-redux';
 import { IAuthentication } from '../../../utils/interfaces';
-import { setUserConnected } from '../../../app/feature/userSlice';
+import { setUserConnected } from '../../../app/feature/UserSlice';
+import { Authentication } from '../../../utils/types/Index';
 
 export default function FormAuthentication(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,11 +16,6 @@ export default function FormAuthentication(): JSX.Element {
     handleSubmit,
     formState: { errors },
   } = useForm<Authentication>();
-
-  type Authentication = {
-    firstname: string;
-    password: string;
-  };
 
   const signIn = useSignIn();
 

@@ -1,6 +1,5 @@
-import styles from './result-details.module.css';
+import styles from './ResultDetails.module.css';
 import { useParams } from 'react-router-dom';
-import React from 'react';
 
 export default function ResultDetails(): JSX.Element {
   const params = useParams();

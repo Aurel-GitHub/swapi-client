@@ -1,4 +1,4 @@
-import '../../styles/global/global.css';
+import '../../styles/global/Global.css';
 
 export default function DropdownCategories(): JSX.Element {
   return (

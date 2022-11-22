@@ -1,4 +1,4 @@
-import '../../styles/global/global.css';
+import '../../styles/global/Global.css';
 export default function InputLanguage(): JSX.Element {
   return (
     <div className='marginTopRes'>

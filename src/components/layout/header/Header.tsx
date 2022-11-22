@@ -1,8 +1,8 @@
-import DropdownCategories from '../../inputs/dropdown-categories';
-import InputLanguage from '../../inputs/input-language';
-import InputSearch from '../../inputs/input-search';
-import styles from './header.module.css';
-import '../../../styles/global/global.css';
+import DropdownCategories from '../../inputs/DropdownCategories';
+import InputLanguage from '../../inputs/InputLanguage';
+import InputSearch from '../../inputs/InputSearch';
+import styles from './Header.module.css';
+import '../../../styles/global/Global.css';
 import { Link } from 'react-router-dom';
 
 export default function Header(): JSX.Element {
