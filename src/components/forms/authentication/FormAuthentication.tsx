@@ -1,9 +1,13 @@
-import styles from './form-authentication.module.css';
+import styles from './FormAuthentication.module.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSignIn } from 'react-auth-kit';
+import { useDispatch } from 'react-redux';
+import { IAuthentication } from '../../../utils/interfaces';
+import { setUserConnected } from '../../../app/feature/UserSlice';
+import { Authentication } from '../../../utils/types/Index';
 
 export default function FormAuthentication(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState('');
@@ -13,12 +17,9 @@ export default function FormAuthentication(): JSX.Element {
     formState: { errors },
   } = useForm<Authentication>();
 
-  type Authentication = {
-    firstname: string;
-    password: string;
-  };
-
   const signIn = useSignIn();
+
+  const dispatch = useDispatch();
 
   const naviguate = useNavigate();
 
@@ -27,13 +28,14 @@ export default function FormAuthentication(): JSX.Element {
   ): Promise<void> => {
     try {
       const response = await axios.post('http://localhost:5000/login', formValues);
-      console.log('response', response);
+      const { token, firstname }: IAuthentication = response.data;
       signIn({
-        token: response.data.token,
+        token: token,
         expiresIn: 3600,
         tokenType: 'Bearer',
-        authState: { firstname: formValues.firstname },
+        authState: { firstname: firstname },
       });
+      dispatch(setUserConnected(firstname));
       naviguate('/');
     } catch (error: any) {
       setErrorMessage(error?.response.data);
