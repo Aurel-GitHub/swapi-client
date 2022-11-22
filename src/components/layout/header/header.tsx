@@ -1,8 +1,8 @@
-import DropdownCategories from '../../components/inputs/dropdown-categories';
-import InputLanguage from '../../components/inputs/input-language';
-import InputSearch from '../../components/inputs/input-search';
+import DropdownCategories from '../../inputs/dropdown-categories';
+import InputLanguage from '../../inputs/input-language';
+import InputSearch from '../../inputs/input-search';
 import styles from './header.module.css';
-import '../../styles/global/global.css';
+import '../../../styles/global/global.css';
 import { Link } from 'react-router-dom';
 
 export default function Header(): JSX.Element {
@@ -11,9 +11,6 @@ export default function Header(): JSX.Element {
       <nav className={styles.navHeader}>
         <Link to='/' className='decorationNone'>
           <h1 className={styles.logo}>swapi</h1>
-        </Link>
-        <Link to='/se-connecter' className='decorationNone'>
-          <h1 className={styles.logo}>LOGIN TEST</h1>
         </Link>
         <InputSearch />
         <DropdownCategories />
