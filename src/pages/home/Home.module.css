@@ -1,4 +1,10 @@
 .homeContainer {
-  padding: 1rem;
+  padding: 1rem 10vw;
   flex: 1;
+}
+
+@media (max-width: 1200px) {
+  .homeContainer {
+    padding: 1rem;
+  }
 }
