@@ -12,9 +12,6 @@ export default function Header(): JSX.Element {
         <Link to='/' className='decorationNone'>
           <h1 className={styles.logo}>swapi</h1>
         </Link>
-        <Link to='/se-connecter' className='decorationNone'>
-          <h1 className={styles.logo}>LOGIN TEST</h1>
-        </Link>
         <InputSearch />
         <DropdownCategories />
         <InputLanguage />
