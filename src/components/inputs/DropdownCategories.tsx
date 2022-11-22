@@ -2,14 +2,17 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/global/Global.css';
 import { setSwapiData } from '../../app/feature/ResultSlice';
+import { setIsLoading } from '../../app/feature/SpinnerSlice';
 
 export default function DropdownCategories(): JSX.Element {
   const dispatch = useDispatch();
   const toto = useSelector((state: any) => state.swapi.swapi);
   async function handleSelect(valueSelected: string): Promise<void> {
     try {
+      dispatch(setIsLoading(true));
       const response: AxiosResponse = await axios.get(`http://localhost:5000/${valueSelected}/0`);
       dispatch(setSwapiData(response.data));
+      dispatch(setIsLoading(false));
     } catch (error: AxiosError | any) {
       throw new Error('axios error', error);
     }
