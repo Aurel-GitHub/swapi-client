@@ -8,7 +8,6 @@ export const resultSlice = createSlice({
   reducers: {
     setSwapiData: (state, action) => {
       state.swapi = action.payload;
-      console.log('reducer', state.swapi, 'action', action);
     },
   },
 });

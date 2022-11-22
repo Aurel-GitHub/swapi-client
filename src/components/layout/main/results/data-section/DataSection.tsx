@@ -23,7 +23,7 @@ export default function DataSection(swapiData: ISwapResponse): JSX.Element {
   return (
     <>
       {swapiData.results.map((data: any) => (
-        <Card name={data.name} url='qsdqsdqsd' key={uuidv4()} />
+        <Card name={data[Object.keys(data)[0]]} url='qsdqsdqsd' key={uuidv4()} />
       ))}
       <div className='pageSection'>
         {swapiData.previous && (

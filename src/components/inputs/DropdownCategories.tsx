@@ -1,16 +1,22 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/global/Global.css';
 import { setSwapiData } from '../../app/feature/ResultSlice';
 import { setIsLoading } from '../../app/feature/SpinnerSlice';
+import { ILangState } from '../../utils/interfaces';
 
 export default function DropdownCategories(): JSX.Element {
   const dispatch = useDispatch();
+  const isWookieActived: number = useSelector(
+    (state: ILangState) => state.isWookieActived,
+  ).isWookieActived;
   async function handleSelect(valueSelected: string): Promise<void> {
     try {
       dispatch(setIsLoading(true));
       const response: AxiosResponse = await axios.get(`http://localhost:5000/${valueSelected}/0`);
-      dispatch(setSwapiData(response.data));
+      if (!isWookieActived) {
+        dispatch(setSwapiData(response.data));
+      }
       dispatch(setIsLoading(false));
     } catch (error: AxiosError | any) {
       throw new Error('error', error);
