@@ -31,13 +31,13 @@ export default function Results(): JSX.Element {
             </>
           ) : (
             <>
-              <h4>
-                Le Wookie JSON doit être sûrement endommagé{' '}
-                <a href='https://github.com/phalt/swapi/issues/128'>Issue GitHub</a> <br />
-                et ce malgrès le possible{' '}
-                <a href='https://github.com/phalt/swapi/issues/100'>work around</a>
+              <h4 style={{ textAlign: 'center' }}>
+                Le Wookie JSON doit être sûrement endommagé
+                <a href='https://github.com/phalt/swapi/issues/128'> Issue GitHub</a> <br />
+                et ce malgrès le possible
+                <a href='https://github.com/phalt/swapi/issues/100'> work around</a>
               </h4>
-              <p>{String(wookieBrokenJSONTrad)}</p>
+              <p className={styles.errorWookieResponse}>{String(wookieBrokenJSONTrad)}</p>
             </>
           )}
         </>
