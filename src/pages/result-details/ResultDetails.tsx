@@ -6,39 +6,54 @@ import { setIsLoading } from '../../app/feature/SpinnerSlice';
 import { ISpinnerState } from '../../utils/interfaces';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../components/spinner/Spinner';
+import { v4 as uuidv4 } from 'uuid';
 
 interface ITest {
   data: { currentKey: string; dataResult: any };
 }
 function Test({ data }: ITest): JSX.Element {
-  const isOK: boolean =
+  const isRedirectLink: boolean =
     data.currentKey === 'films' ||
     data.currentKey === 'url' ||
     data.currentKey === 'planets' ||
     data.currentKey === 'starships' ||
     data.currentKey === 'vehicles' ||
     data.currentKey === 'species' ||
-    data.currentKey === 'homeworld';
-  data.currentKey === 'url';
-  data.dataResult;
+    data.currentKey === 'resident' ||
+    data.currentKey === 'homeworld' ||
+    data.currentKey === 'characters' ||
+    data.currentKey === 'residents' ||
+    data.currentKey === 'url';
 
-  if (isOK) {
+  const isDateValue = data.currentKey === 'created' || data.currentKey === 'edited';
+
+  if (isRedirectLink) {
     if (data.currentKey === 'homeworld' || data.currentKey === 'url') {
       const value: string = data.dataResult[data.currentKey];
       return <Link to={`${value.slice(21)}`}>Lien</Link>;
     } else {
       const value: string[] = data.dataResult[data.currentKey];
-      // console.log('possible val', value, data.currentKey);
+      if (!value.length) return <>No information available</>;
       return (
         <>
-          {value.forEach((elt) => (
-            <p>
+          {value.map((elt) => (
+            <span key={uuidv4()}>
               <Link to={`${elt.slice(21)}`}>{elt}</Link>
-            </p>
+              <br />
+            </span>
           ))}
         </>
       );
     }
+  } else if (isDateValue) {
+    const value: string = data.dataResult[data.currentKey];
+    const dateConverted: string = new Date(value).toLocaleDateString('en-us', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
+    return <>{dateConverted}</>;
   } else {
     return <></>;
   }
@@ -47,8 +62,6 @@ function Test({ data }: ITest): JSX.Element {
 export default function ResultDetails(): JSX.Element {
   const params = useParams();
   const dispatch = useDispatch();
-
-  console.log('params', params);
 
   const [precendentParams, setPrecendentParams] = useState<string>();
   const [details, setDetails] = useState<null | AxiosResponse>(null);
@@ -60,7 +73,6 @@ export default function ResultDetails(): JSX.Element {
         dispatch(setIsLoading(true));
         const response: AxiosResponse = await axios.get(uri);
         setDetails(response);
-        console.log('details', details);
         setPrecendentParams(params.categories);
         dispatch(setIsLoading(false));
       } catch (error: AxiosError | any) {
@@ -94,6 +106,9 @@ export default function ResultDetails(): JSX.Element {
                     key.includes('vehicles') ||
                     key.includes('species') ||
                     key.includes('residents') ||
+                    key.includes('characters') ||
+                    key.includes('created') ||
+                    key.includes('edited') ||
                     key.includes('homeworld') ? (
                       <>
                         <h4>{key}:</h4>
