@@ -1,5 +1,4 @@
 export * from './i-action-user-reducer';
-export * from './i-attributes';
 export * from './i-authentication';
 export * from './i-card-props';
 export * from './i-categorie-state';

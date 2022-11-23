@@ -5,6 +5,7 @@ import spinnerReducer from '../feature/SpinnerSlice';
 import langReducer from '../feature/LangSlice';
 import categorieReducer from '../feature/CategorieSlice';
 import errorMessageReducer from '../feature/ErrorMessageSlice ';
+import detailReducer from '../feature/DetailSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     isWookieActived: langReducer,
     categorieSelected: categorieReducer,
     errorMessage: errorMessageReducer,
+    detailSelected: detailReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
