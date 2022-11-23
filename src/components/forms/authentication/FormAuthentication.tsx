@@ -1,7 +1,7 @@
 import styles from './FormAuthentication.module.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSignIn } from 'react-auth-kit';
 import { useDispatch } from 'react-redux';
@@ -37,8 +37,12 @@ export default function FormAuthentication(): JSX.Element {
       });
       dispatch(setUserConnected(firstname));
       naviguate('/');
-    } catch (error: any) {
-      setErrorMessage(error?.response.data);
+    } catch (error: AxiosError | any) {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage(error.response?.data);
+      } else {
+        setErrorMessage('Prénom ou Mot de passe incorrect');
+      }
     }
   };
 

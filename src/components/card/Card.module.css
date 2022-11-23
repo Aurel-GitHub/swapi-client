@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  background-color: beige;
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid black;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.cardSpan {
+  font-weight: 600;
+}
+.cardButtonDetails {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .card {
+    width: 100%;
+  }
+}
