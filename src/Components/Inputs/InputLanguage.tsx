@@ -1,4 +1,4 @@
-import '../../Assets/Styles/Global/Global.css';
+import 'Assets/Styles/Global/Responsive.css';
 import { useDispatch } from 'react-redux';
 import { setWookieLang } from 'Services/Feature/LangSlice';
 
@@ -6,7 +6,7 @@ export default function InputLanguage(): JSX.Element {
   const dispatch = useDispatch();
 
   return (
-    <div className='marginTopRes'>
+    <div className='marginTopResponsive'>
       <select
         name='lang'
         id='lang-select'

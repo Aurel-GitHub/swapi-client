@@ -37,10 +37,11 @@ export default function InputSearch(): JSX.Element {
   }
 
   return (
-    <div className='marginTopRes'>
+    <>
       {swapiData.results ? (
         <>
           <input
+            className='marginTopResponsive'
             type='search'
             id='site-search'
             disabled={!swapiData}
@@ -55,6 +56,6 @@ export default function InputSearch(): JSX.Element {
           Choose a category
         </button>
       )}
-    </div>
+    </>
   );
 }

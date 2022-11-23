@@ -1,6 +1,7 @@
 import styles from './Card.module.css';
 import { Link } from 'react-router-dom';
 import { ICardProps } from 'Services/Utils/Interfaces/index';
+
 export default function Card({ cardDetail }: ICardProps): JSX.Element {
   const defaultName: string | undefined = cardDetail['name'] || cardDetail['title'];
 

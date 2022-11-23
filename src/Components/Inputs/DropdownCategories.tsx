@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import 'Assets/Styles/Global/Global.css';
+import 'Assets/Styles/Global/Responsive.css';
 import { setSwapiData } from 'Services/Feature/ResultSlice';
 import { setIsLoading } from 'Services/Feature/SpinnerSlice';
 import { ICategorieState, ILangState } from 'Services/Utils/Interfaces';
@@ -32,7 +32,7 @@ export default function DropdownCategories(): JSX.Element {
   }
 
   return (
-    <div className='marginTopRes'>
+    <div className='marginTopResponsive'>
       <select
         name='categories'
         id='categories-select'

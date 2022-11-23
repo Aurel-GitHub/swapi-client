@@ -1,0 +1,6 @@
+/* Responsive */
+@media (max-width: 700px) {
+  .marginTopResponsive {
+    margin: 1vh;
+  }
+}
