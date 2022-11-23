@@ -16,7 +16,7 @@ export default function Results(): JSX.Element {
   const isWookieActived = useSelector((state: ILangState) => state.isWookieActived).isWookieActived;
   const errorMessage = useSelector((state: IErrorMessage) => state.errorMessage).errorMessage;
 
-  const wookieBrokenJSONTrad = localStorage.getItem('wookieTrad');
+  // const wookieBrokenJSONTrad = localStorage.getItem('wookieTrad');
 
   useEffect(() => undefined, [swapiData, isLoading, isWookieActived, errorMessage]);
 
@@ -25,20 +25,20 @@ export default function Results(): JSX.Element {
       {errorMessage ? <h3>{errorMessage}</h3> : ''}
       {!isLoading ? (
         <>
-          {!isWookieActived ? (
-            <>
-              {swapiData?.results ? (
-                <DataSection
-                  results={swapiData.results}
-                  count={swapiData.count}
-                  next={swapiData.next}
-                  previous={swapiData.previous}
-                />
-              ) : (
-                <h3>Please select a category</h3>
-              )}
-            </>
-          ) : (
+          {/* {!isWookieActived ? ( */}
+          <>
+            {swapiData?.results ? (
+              <DataSection
+                results={swapiData.results}
+                count={swapiData.count}
+                next={swapiData.next}
+                previous={swapiData.previous}
+              />
+            ) : (
+              <h3>Please select a category</h3>
+            )}
+          </>
+          {/* ) : (
             <>
               <h4 style={{ textAlign: 'center' }}>
                 The Wookie JSON must be damaged:
@@ -48,7 +48,7 @@ export default function Results(): JSX.Element {
               </h4>
               <p className={styles.errorWookieResponse}>{String(wookieBrokenJSONTrad)}</p>
             </>
-          )}
+          )} */}
         </>
       ) : (
         <Spinner />

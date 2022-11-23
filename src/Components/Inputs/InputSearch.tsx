@@ -39,7 +39,7 @@ export default function InputSearch(): JSX.Element {
   return (
     <>
       {swapiData.results ? (
-        <>
+        <div>
           <input
             className='marginTopResponsive'
             type='search'
@@ -50,7 +50,7 @@ export default function InputSearch(): JSX.Element {
             onChange={(e) => setvalueSearch(e.target.value)}
           />
           <button onClick={handleSearch}>Search</button>
-        </>
+        </div>
       ) : (
         <button style={{ cursor: 'not-allowed' }} disabled>
           Choose a category
