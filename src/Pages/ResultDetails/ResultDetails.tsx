@@ -18,18 +18,16 @@ export default function ResultDetails(): JSX.Element {
   const isWookieActived: number = useSelector(
     (state: ILangState) => state.isWookieActived,
   ).isWookieActived;
-  // const uri: string = 'http://localhost:5000/' + params.categories + '/0/' + params.id;
 
   const uri: string =
     'http://localhost:5000/' + params.categories + '/' + isWookieActived + '/' + params.id;
-  console.log('uri', uri);
+
   useEffect(() => {
     async function fetchData(): Promise<void> {
       try {
         dispatch(setIsLoading(true));
         const response: AxiosResponse = await axios.get(uri);
         setDetails(response);
-        console.log('res', response);
         setPrecendentParams(params.categories);
         dispatch(setIsLoading(false));
       } catch (error: AxiosError | any) {

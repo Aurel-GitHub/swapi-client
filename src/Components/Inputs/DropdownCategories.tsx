@@ -24,17 +24,12 @@ export default function DropdownCategories(): JSX.Element {
       const response: AxiosResponse = await axios.get(
         `http://localhost:5000/${valueSelected}/${isWookieActived}`,
       );
-
-      /** patch en cours */
-      console.log('res', response);
-
-      /**
-       * todo
-       * supprimer condition quand le format Wookie fonctionnera pour la recherche par catégories
-       * retirer également la condition d'afficage dans le header pour le dropdown des trads
-       */
       if (!isWookieActived) {
         dispatch(setSwapiData(response.data));
+      } else {
+        const jsonBroken: string = response.data;
+        const jsonRepaired: any = jsonBroken.replace('whhuanan', '"whhuanan"');
+        dispatch(setSwapiData(jsonRepaired));
       }
       dispatch(setIsLoading(false));
     } catch (error: AxiosError | any) {
