@@ -1,4 +1,4 @@
-import { ISwapResponse } from 'Services/Utils/Interfaces/index';
+import { ICardDetailProps, ISwapResponse } from 'Services/Utils/Interfaces/index';
 import { useDispatch } from 'react-redux';
 import { setIsLoading } from 'Services/Feature/SpinnerSlice';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -22,7 +22,7 @@ export default function DataSection(swapiData: ISwapResponse): JSX.Element {
   }
   return (
     <>
-      {swapiData.results.map((data: any) => (
+      {swapiData.results.map((data: ICardDetailProps) => (
         <Card cardDetail={data} key={uuidv4()} />
       ))}
       <div className='pageSection'>

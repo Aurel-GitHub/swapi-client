@@ -24,7 +24,10 @@
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "no-console": 0,
-    "no-constant-condition": 0
+    "no-constant-condition": 0,
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "import/resolver": {

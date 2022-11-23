@@ -37,7 +37,7 @@ export default function FormAuthentication(): JSX.Element {
       });
       dispatch(setUserConnected(firstname));
       naviguate('/');
-    } catch (error: AxiosError | any) {
+    } catch (error: AxiosError | unknown) {
       if (axios.isAxiosError(error)) {
         setErrorMessage(error.response?.data);
       } else {

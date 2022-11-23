@@ -3,15 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { setIsLoading } from 'Services/Feature/SpinnerSlice';
-import { ISpinnerState } from 'Services/Utils/Interfaces';
+import { IFormatDetailsValue, ISpinnerState } from 'Services/Utils/Interfaces';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from 'Components/Spinner/Spinner';
 import { v4 as uuidv4 } from 'uuid';
 
-interface ITest {
-  data: { currentKey: string; dataResult: any };
-}
-function Test({ data }: ITest): JSX.Element {
+function FormatDetailsValue({ data }: IFormatDetailsValue): JSX.Element {
   const isRedirectLink: boolean =
     data.currentKey === 'films' ||
     data.currentKey === 'url' ||
@@ -112,7 +109,7 @@ export default function ResultDetails(): JSX.Element {
                     key.includes('homeworld') ? (
                       <>
                         <h4>{key}:</h4>
-                        <Test data={{ currentKey: key, dataResult: data }} />
+                        <FormatDetailsValue data={{ currentKey: key, dataResult: data }} />
                       </>
                     ) : (
                       <>
