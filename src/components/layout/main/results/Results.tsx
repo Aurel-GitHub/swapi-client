@@ -1,15 +1,20 @@
 import styles from './Results.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ISwapiState, ISpinnerState, ILangState } from '../../../../utils/interfaces';
 import Spinner from '../../../spinner/Spinner';
 import DataSection from './data-section/DataSection';
 import { useEffect } from 'react';
+import axios, { AxiosResponse } from 'axios';
+import { setSwapiData } from '../../../../app/feature/ResultSlice';
+import { setIsLoading } from '../../../../app/feature/SpinnerSlice';
 
 export default function Results(): JSX.Element {
+  const dispatch = useDispatch();
   const swapiData = useSelector((state: ISwapiState) => state.swapi).swapi;
   const isLoading = useSelector((state: ISpinnerState) => state.isLoading).isLoading;
   const isWookieActived = useSelector((state: ILangState) => state.isWookieActived).isWookieActived;
   const wookieBrokenJSONTrad = localStorage.getItem('wookieTrad');
+
   useEffect(() => undefined, [swapiData, isLoading, isWookieActived]);
 
   return (
@@ -26,7 +31,7 @@ export default function Results(): JSX.Element {
                   previous={swapiData.previous}
                 />
               ) : (
-                <h3>Aucune donnée actuellement, Veuillez saisir une catégorie</h3>
+                <h3>Veuillez saisir une catégorie</h3>
               )}
             </>
           ) : (
@@ -46,4 +51,7 @@ export default function Results(): JSX.Element {
       )}
     </div>
   );
+}
+function dispatch(arg0: { payload: any; type: 'swapi/setSwapiData' }) {
+  throw new Error('Function not implemented.');
 }

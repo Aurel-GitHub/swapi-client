@@ -8,10 +8,16 @@ export default function InputSearch(): JSX.Element {
 
   return (
     <div className='marginTopRes'>
-      <input type='search' id='site-search' />
-      <button>
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </button>
+      {swapiData.results ? (
+        <input
+          type='search'
+          id='site-search'
+          disabled={!swapiData}
+          placeholder='Recherche par nom'
+        />
+      ) : (
+        <input placeholder='Veuillez choisir une catégorie' style={{ cursor: 'not-allowed' }} />
+      )}
     </div>
   );
 }

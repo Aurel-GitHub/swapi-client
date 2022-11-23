@@ -1,7 +1,7 @@
 import { ISwapResponse } from '../../../../../utils/interfaces';
 import { useDispatch } from 'react-redux';
 import { setIsLoading } from '../../../../../app/feature/SpinnerSlice';
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { setSwapiData } from '../../../../../app/feature/ResultSlice';
 import Card from '../../../../card/Card';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,7 +13,7 @@ export default function DataSection(swapiData: ISwapResponse): JSX.Element {
     try {
       if (!url) return;
       dispatch(setIsLoading(true));
-      const response = await axios.get(url);
+      const response: AxiosResponse = await axios.get(url);
       dispatch(setSwapiData(response.data));
       dispatch(setIsLoading(false));
     } catch (error: AxiosError | any) {

@@ -5,3 +5,4 @@ export * from './i-spinner-state';
 export * from './i-swapi-response';
 export * from './i-swapi-state';
 export * from './i-user';
+export * from './i-categorie-state';
