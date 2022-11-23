@@ -24,6 +24,10 @@ export default function DropdownCategories(): JSX.Element {
       const response: AxiosResponse = await axios.get(
         `http://localhost:5000/${valueSelected}/${isWookieActived}`,
       );
+
+      /** patch en cours */
+      console.log('res', response);
+
       /**
        * todo
        * supprimer condition quand le format Wookie fonctionnera pour la recherche par catégories

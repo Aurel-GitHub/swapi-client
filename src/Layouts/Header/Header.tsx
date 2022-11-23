@@ -7,14 +7,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 export default function Header(): JSX.Element {
   const location = useLocation();
-  console.log(
-    'loc',
-    location.hash,
-    location.key,
-    location.pathname,
-    location.search,
-    location.state,
-  );
   return (
     <header>
       <nav className={styles.navHeader}>
