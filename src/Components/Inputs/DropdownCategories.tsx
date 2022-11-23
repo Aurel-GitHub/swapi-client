@@ -21,10 +21,13 @@ export default function DropdownCategories(): JSX.Element {
       dispatch(setErrorMessage(''));
       dispatch(setIsLoading(true));
       dispatch(setCategorie(valueSelected));
-      const response: AxiosResponse = await axios.get(`http://localhost:5000/${valueSelected}/0`);
-      if (!isWookieActived) {
-        dispatch(setSwapiData(response.data));
-      }
+      const response: AxiosResponse = await axios.get(
+        `http://localhost:5000/${valueSelected}/${isWookieActived}`,
+      );
+      // ! conserver commenter le format wookie ne marche pas avec les recherches par catégories
+      // if (!isWookieActived) {
+      dispatch(setSwapiData(response.data));
+      // }
       dispatch(setIsLoading(false));
     } catch (error: AxiosError | any) {
       throw new Error('error', error);
