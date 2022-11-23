@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import './styles/Index.css';
+import '../src/Assets/Styles/Index.css';
 import App from './App';
 import { AuthProvider } from 'react-auth-kit';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './app/store/Store';
+import { store } from './Services/Store/Store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
