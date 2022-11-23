@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/global/Global.css';
 import { setSwapiData } from '../../app/feature/ResultSlice';
 import { setIsLoading } from '../../app/feature/SpinnerSlice';
-import { ICategorieState, ILangState, ISwapiState } from '../../utils/interfaces';
+import { ICategorieState, ILangState } from '../../utils/interfaces';
 import { setCategorie } from '../../app/feature/CategorieSlice';
+import { setErrorMessage } from '../../app/feature/ErrorMessageSlice ';
 
 export default function DropdownCategories(): JSX.Element {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ export default function DropdownCategories(): JSX.Element {
   async function handleSelect(valueSelected: string): Promise<void> {
     try {
       if (valueSelected === categorieSelected) return;
+      dispatch(setErrorMessage(''));
       dispatch(setIsLoading(true));
       dispatch(setCategorie(valueSelected));
       const response: AxiosResponse = await axios.get(`http://localhost:5000/${valueSelected}/0`);

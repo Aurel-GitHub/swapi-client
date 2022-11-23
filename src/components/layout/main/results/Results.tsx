@@ -1,24 +1,24 @@
 import styles from './Results.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ISwapiState, ISpinnerState, ILangState } from '../../../../utils/interfaces';
 import Spinner from '../../../spinner/Spinner';
 import DataSection from './data-section/DataSection';
 import { useEffect } from 'react';
-import axios, { AxiosResponse } from 'axios';
-import { setSwapiData } from '../../../../app/feature/ResultSlice';
-import { setIsLoading } from '../../../../app/feature/SpinnerSlice';
+import { IErrorMessage } from '../../../../utils/interfaces/i-error-message';
 
 export default function Results(): JSX.Element {
-  const dispatch = useDispatch();
   const swapiData = useSelector((state: ISwapiState) => state.swapi).swapi;
   const isLoading = useSelector((state: ISpinnerState) => state.isLoading).isLoading;
   const isWookieActived = useSelector((state: ILangState) => state.isWookieActived).isWookieActived;
+  const errorMessage = useSelector((state: IErrorMessage) => state.errorMessage).errorMessage;
+
   const wookieBrokenJSONTrad = localStorage.getItem('wookieTrad');
 
-  useEffect(() => undefined, [swapiData, isLoading, isWookieActived]);
+  useEffect(() => undefined, [swapiData, isLoading, isWookieActived, errorMessage]);
 
   return (
     <div className={styles.resultSection}>
+      {errorMessage ? <h3>{errorMessage}</h3> : ''}
       {!isLoading ? (
         <>
           {!isWookieActived ? (
@@ -51,7 +51,4 @@ export default function Results(): JSX.Element {
       )}
     </div>
   );
-}
-function dispatch(arg0: { payload: any; type: 'swapi/setSwapiData' }) {
-  throw new Error('Function not implemented.');
 }
