@@ -39,7 +39,7 @@ export default function ResultDetails(): JSX.Element {
     if (params.categories !== precendentParams) {
       fetchData();
     }
-    if (isWookieActived) {
+    if (isWookieActived || !isWookieActived) {
       fetchData();
     }
   }, [params.categories, isWookieActived]);
