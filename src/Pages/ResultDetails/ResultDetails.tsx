@@ -6,7 +6,7 @@ import { setIsLoading } from 'Services/Feature/SpinnerSlice';
 import { ISpinnerState } from 'Services/Utils/Interfaces';
 import { useSelector, useDispatch } from 'react-redux';
 import Spinner from 'Components/Spinner/Spinner';
-import FormatDetailsValue from 'Services/Utils/Formater/FormatValue/formatValue';
+import FormatValue from 'Services/Utils/Formaters/FormatValue/formatValue';
 
 export default function ResultDetails(): JSX.Element {
   const params = useParams();
@@ -61,7 +61,7 @@ export default function ResultDetails(): JSX.Element {
                     key.includes('homeworld') ? (
                       <>
                         <h4>{key}:</h4>
-                        <FormatDetailsValue data={{ currentKey: key, dataResult: data }} />
+                        <FormatValue data={{ currentKey: key, dataResult: data }} />
                       </>
                     ) : (
                       <>

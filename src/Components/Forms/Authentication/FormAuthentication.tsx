@@ -67,7 +67,7 @@ export default function FormAuthentication(): JSX.Element {
             required: true,
           })}
         />
-        {errors.password && <small className={styles.textDanger}>Please enter a First name</small>}
+        {errors.password && <small className={styles.textDanger}>Please enter a Password</small>}
 
         {errorMessage && <small className={styles.textDanger}>{errorMessage}</small>}
         <button type='submit' className={styles.formBtn}>
