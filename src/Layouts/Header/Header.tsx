@@ -21,14 +21,13 @@ export default function Header(): JSX.Element {
         <Link to='/' className='decorationNone'>
           <h1 className={styles.logo}>swapi</h1>
         </Link>
-        {location.pathname === '/' ? (
+        {location.pathname === '/' && (
           <>
             <DropdownCategories />
             <InputSearch />
           </>
-        ) : (
-          <InputLanguage />
         )}
+        <InputLanguage />
       </nav>
     </header>
   );
