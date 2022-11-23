@@ -7,25 +7,33 @@ import { RequireAuth } from 'react-auth-kit';
 
 function App() {
   return (
-    <>
-      <div className='app'>
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <RequireAuth loginPath='/se-connecter'>
-                <>
-                  <Header />
-                  <Home />
-                </>
-              </RequireAuth>
-            }
-          />
-          <Route path='/se-connecter' element={<Login />} />
-          <Route path='/:categories/:id' element={<ResultDetails />} />
-        </Routes>
-      </div>
-    </>
+    <div className='app'>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <RequireAuth loginPath='/se-connecter'>
+              <>
+                <Header />
+                <Home />
+              </>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/:categories/:id'
+          element={
+            <RequireAuth loginPath='/se-connecter'>
+              <>
+                <Header />
+                <ResultDetails />
+              </>
+            </RequireAuth>
+          }
+        />
+        <Route path='/se-connecter' element={<Login />} />
+      </Routes>
+    </div>
   );
 }
 

@@ -1,10 +1,14 @@
 import styles from './Results.module.css';
 import { useSelector } from 'react-redux';
-import { ISwapiState, ISpinnerState, ILangState } from '../../../../utils/interfaces';
+import {
+  ISwapiState,
+  ISpinnerState,
+  ILangState,
+  IErrorMessage,
+} from '../../../../utils/interfaces';
 import Spinner from '../../../spinner/Spinner';
 import DataSection from './data-section/DataSection';
 import { useEffect } from 'react';
-import { IErrorMessage } from '../../../../utils/interfaces/i-error-message';
 
 export default function Results(): JSX.Element {
   const swapiData = useSelector((state: ISwapiState) => state.swapi).swapi;
