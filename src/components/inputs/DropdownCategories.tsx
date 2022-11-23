@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../styles/global/Global.css';
@@ -39,17 +38,13 @@ export default function DropdownCategories(): JSX.Element {
         id='categories-select'
         onChange={(e) => handleSelect(e.target.value)}
       >
-        {
-          <option value={!categorieSelected ? '' : categorieSelected}>
-            --Choisir une catégorie--
-          </option>
-        }
-        <option value='planets'>Planètes</option>
-        <option value='starships'>Vaisseaux</option>
-        <option value='vehicles'>Véhicules</option>
-        <option value='people'>Personnages</option>
+        {<option value={!categorieSelected ? '' : categorieSelected}>--Choose a category--</option>}
+        <option value='planets'>Planets</option>
+        <option value='starships'>Starships</option>
+        <option value='vehicles'>Vehicles</option>
+        <option value='people'>people</option>
         <option value='films'>Films</option>
-        <option value='species'>Espèces</option>
+        <option value='species'>Species</option>
       </select>
     </div>
   );

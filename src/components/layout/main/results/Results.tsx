@@ -35,7 +35,7 @@ export default function Results(): JSX.Element {
                   previous={swapiData.previous}
                 />
               ) : (
-                <h3>Veuillez choisir une catégorie</h3>
+                <h3>Please select a category</h3>
               )}
             </>
           ) : (

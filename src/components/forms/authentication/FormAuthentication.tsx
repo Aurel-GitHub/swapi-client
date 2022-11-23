@@ -41,25 +41,25 @@ export default function FormAuthentication(): JSX.Element {
       if (axios.isAxiosError(error)) {
         setErrorMessage(error.response?.data);
       } else {
-        setErrorMessage('Prénom ou Mot de passe incorrect');
+        setErrorMessage('Incorrect first name or password');
       }
     }
   };
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>Se connecter</h1>
+      <h1 style={{ textAlign: 'center' }}>Login</h1>
       <form className={styles.formLogin} onSubmit={handleSubmit(onSubmit)}>
-        <label className={styles.formLabel}>Prénom</label>
+        <label className={styles.formLabel}>First name</label>
         <input
           className={styles.formInput}
           {...register('firstname', {
             required: true,
           })}
         />
-        {errors.firstname && <small className={styles.textDanger}>Veuillez saisir un prénom</small>}
+        {errors.firstname && <small className={styles.textDanger}>Please enter a First name</small>}
 
-        <label className={styles.formLabel}>Mot de passe</label>
+        <label className={styles.formLabel}>Password</label>
         <input
           type='password'
           className={styles.formInput}
@@ -67,12 +67,12 @@ export default function FormAuthentication(): JSX.Element {
             required: true,
           })}
         />
-        {errors.password && (
-          <small className={styles.textDanger}>Veuillez saisir un mot de passe</small>
-        )}
+        {errors.password && <small className={styles.textDanger}>Please enter a First name</small>}
 
         {errorMessage && <small className={styles.textDanger}>{errorMessage}</small>}
-        <input type='submit' className={styles.formBtn} />
+        <button type='submit' className={styles.formBtn}>
+          Send
+        </button>
       </form>
     </>
   );

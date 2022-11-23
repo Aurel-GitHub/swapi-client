@@ -27,7 +27,7 @@ export default function InputSearch(): JSX.Element {
       );
       const result: ISwapResponse = response.data;
       if (result.results.length < 1) {
-        dispatch(setErrorMessage(`${valueSearch} n'existe pas`));
+        dispatch(setErrorMessage(`${valueSearch} doesn't exist`));
       }
       dispatch(setSwapiData(response.data));
       dispatch(setIsLoading(false));
@@ -44,15 +44,15 @@ export default function InputSearch(): JSX.Element {
             type='search'
             id='site-search'
             disabled={!swapiData}
-            placeholder='Recherche par nom'
+            placeholder='Search by name'
             value={valueSearch}
             onChange={(e) => setvalueSearch(e.target.value)}
           />
-          <button onClick={handleSearch}>chercher</button>
+          <button onClick={handleSearch}>Search</button>
         </>
       ) : (
         <button style={{ cursor: 'not-allowed' }} disabled>
-          Veuillez choisir une catégorie
+          Choose a category
         </button>
       )}
     </div>
