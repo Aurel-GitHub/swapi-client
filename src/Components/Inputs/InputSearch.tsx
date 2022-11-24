@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ICategorieState, ISwapResponse } from 'Services/Utils/Interfaces';
+import { ICategorieState, ISpinnerState, ISwapResponse } from 'Services/Utils/Interfaces';
 import { ISwapiState } from 'Services/Utils/Interfaces/i-swapi-state';
 import { setIsLoading } from 'Services/Feature/SpinnerSlice';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -13,6 +13,7 @@ export default function InputSearch(): JSX.Element {
   const categorieSelected = useSelector(
     (state: ICategorieState) => state.categorieSelected,
   ).categorieSelected;
+  const isLoading = useSelector((state: ISpinnerState) => state.isLoading).isLoading;
 
   const [valueSearch, setvalueSearch] = useState<string>('');
   async function handleSearch(): Promise<void> {
@@ -49,7 +50,9 @@ export default function InputSearch(): JSX.Element {
             value={valueSearch}
             onChange={(e) => setvalueSearch(e.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleSearch} disabled={isLoading}>
+            Search
+          </button>
         </div>
       ) : (
         <button style={{ cursor: 'not-allowed' }} disabled>

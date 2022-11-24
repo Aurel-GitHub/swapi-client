@@ -11,7 +11,7 @@ import FormatValue from 'Services/Utils/Formaters/FormatValue/formatValue';
 export default function ResultDetails(): JSX.Element {
   const params = useParams();
   const dispatch = useDispatch();
-
+  const [oldLanguageSelected, setOldLanguageSelected] = useState<null | number>(null);
   const [precendentParams, setPrecendentParams] = useState<string>();
   const [details, setDetails] = useState<null | AxiosResponse>(null);
   const isLoading = useSelector((state: ISpinnerState) => state.isLoading).isLoading;
@@ -51,8 +51,9 @@ export default function ResultDetails(): JSX.Element {
     if (params.categories !== precendentParams) {
       fetchData();
     }
-    if (isWookieActived || !isWookieActived) {
+    if (isWookieActived !== oldLanguageSelected) {
       fetchData();
+      setOldLanguageSelected(isWookieActived);
     }
   }, [params.categories, isWookieActived]);
 
