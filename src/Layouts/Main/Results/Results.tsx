@@ -28,25 +28,22 @@ export default function Results(): JSX.Element {
     (state: ICategorieState) => state.categorieSelected,
   ).categorieSelected;
 
-  const uri: string = 'http://localhost:5000/' + categorieSelected + '/' + isWookieActived;
+  const uri: string = 'http://localhost:5000/' + categorieSelected + '/' + 0;
   useEffect(() => {
     async function fetchData(): Promise<void> {
       if (!categorieSelected) return;
-      setOldCategorySelected(categorieSelected);
+
       try {
         dispatch(setErrorMessage(''));
         dispatch(setIsLoading(true));
+
+        setOldCategorySelected(categorieSelected);
         const response: AxiosResponse = await axios.get(uri);
         if (!isWookieActived) {
           dispatch(setSwapiData(response.data));
-          console.log('Data without Wookie', response.data);
-        } else {
-          const jsonBroken = response.data;
-          const jsonRepaired = JSON.parse(jsonBroken.replace('whhuanan', '"whhuanan"'));
-          console.log('wookie repared', JSON.parse(jsonRepaired));
-          dispatch(setSwapiData(jsonRepaired));
         }
       } catch (error: AxiosError | any) {
+        dispatch(setErrorMessage('Error from API'));
         throw new Error('error', error);
       } finally {
         dispatch(setIsLoading(false));
@@ -55,7 +52,7 @@ export default function Results(): JSX.Element {
     if (categorieSelected && categorieSelected !== oldCategorySelected) {
       fetchData();
     }
-  }, [swapiData, isLoading, errorMessage, isWookieActived, categorieSelected]);
+  }, [swapiData, isLoading, errorMessage, categorieSelected]);
 
   return (
     <div className={styles.resultSection}>
