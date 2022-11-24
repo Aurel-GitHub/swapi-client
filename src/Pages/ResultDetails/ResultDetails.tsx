@@ -22,6 +22,20 @@ export default function ResultDetails(): JSX.Element {
   const uri: string =
     'http://localhost:5000/' + params.categories + '/' + isWookieActived + '/' + params.id;
 
+  const formatField: string[] = [
+    'films',
+    'url',
+    'planets',
+    'starships',
+    'vehicles',
+    'species',
+    'residents',
+    'characters',
+    'created',
+    'edited',
+    'homeworld',
+  ];
+
   useEffect(() => {
     async function fetchData(): Promise<void> {
       try {
@@ -57,17 +71,7 @@ export default function ResultDetails(): JSX.Element {
               {Object.keys(data).map((key, index) => {
                 return (
                   <div key={index}>
-                    {key.includes('films') ||
-                    key.includes('url') ||
-                    key.includes('planets') ||
-                    key.includes('starships') ||
-                    key.includes('vehicles') ||
-                    key.includes('species') ||
-                    key.includes('residents') ||
-                    key.includes('characters') ||
-                    key.includes('created') ||
-                    key.includes('edited') ||
-                    key.includes('homeworld') ? (
+                    {formatField.includes(key) ? (
                       <>
                         <h4>{key}:</h4>
                         <FormatValue data={{ currentKey: key, dataResult: data }} />

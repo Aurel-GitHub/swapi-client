@@ -12,8 +12,8 @@ export default function InputLanguage(): JSX.Element {
         id='lang-select'
         onChange={(e) => dispatch(setWookieLang(Number(e.target.value)))}
       >
-        <option value='0'>English</option>
-        <option value='1'>Wookie</option>
+        <option value='0'>Display in English</option>
+        <option value='1'>Display in Wookie</option>
       </select>
     </div>
   );
