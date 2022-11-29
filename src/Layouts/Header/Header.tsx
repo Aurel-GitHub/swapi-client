@@ -1,4 +1,4 @@
-import DropdownCategories from 'Components/Inputs/DropdownCategories';
+import DropdownCategories from 'Components/Dropdown/DropdownCategories';
 import InputLanguage from 'Components/Inputs/InputLanguage';
 import InputSearch from 'Components/Inputs/InputSearch';
 import styles from './Header.module.css';
